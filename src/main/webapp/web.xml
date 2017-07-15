@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+
+    <!--Home page-->
+    <servlet>
+        <servlet-name>HomePageServlet</servlet-name>
+        <servlet-class>ru.pravvich.servlet.HomePageServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>HomePageServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <!--Addition task to server.-->
+    <servlet>
+        <servlet-name>AdderTaskServlet</servlet-name>
+        <servlet-class>ru.pravvich.servlet.AdderTaskServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdderTaskServlet</servlet-name>
+        <url-pattern>/add_task</url-pattern>
+    </servlet-mapping>
+
+    <!--Getter task to server.-->
+    <servlet>
+        <servlet-name>GetterTaskServlet</servlet-name>
+        <servlet-class>ru.pravvich.servlet.TaskGetterServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetterTaskServlet</servlet-name>
+        <url-pattern>/get_all_tasks</url-pattern>
+    </servlet-mapping>
+</web-app>
