@@ -12,7 +12,11 @@ import java.io.IOException;
 public class UpdateDoneStatusServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        final String data = req.getParameter("data");
-        System.out.println(data);
+        final String id = req.getParameter("id");
+        final String done = req.getParameter("done");
+
+
+        System.out.println(id);
+        System.out.println(done);
     }
 }

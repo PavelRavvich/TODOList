@@ -20,8 +20,8 @@ $(document).ready(function(){
 
                     //insert HTML into DOM here
                     var checkboxName = 'checkbox'+value['id'];
-                    var checkboxValue = value['desc'];
-                    var checkboxHtml = '<input type="checkbox" name="'+checkboxName+'" value="'+checkboxValue+'" />';
+                    var checkboxValue = value['id'];
+                    var checkboxHtml = '<input type="checkbox" class="check-box" data-id='+ checkboxValue+' name="'+checkboxName+'" value="'+checkboxValue+'" />';
                     $('#all_tasks').append(checkboxHtml).append(
                         "</ br>").append(
                             value['id']).append(
@@ -29,22 +29,26 @@ $(document).ready(function(){
                                     'desc').append(
                                         value['create']
                     );
-
                 });
 
-                $('input[type="checkbox"]').on('change', function(e) {
+                $('.check-box').on('change', function(e) {
 
-                    var data = $(this).value;
-                    console.log(data);
-
+                    var checked;
+                    if($(this).attr("checked") != 'checked') {
+                        checked = 0;
+                    } else {
+                        checked = 1;
+                    }
+                    console.log(checked);
+                    console.log($(this).attr("data-id"));
                     $.ajax({
-                        url: "add_task",
-                        data : data,
+                        url: "update_done_status",
+                        data : {id : $(this).attr("data-id"),
+                                done : checked},
                         type : "post"
                     });
+
                 });
-
-
             }
         });
     });
