@@ -37,4 +37,16 @@
         <servlet-name>GetterTaskServlet</servlet-name>
         <url-pattern>/get_all_tasks</url-pattern>
     </servlet-mapping>
+
+
+    <!--Update done status.-->
+    <servlet>
+        <servlet-name>UpdateDoneStatusServlet</servlet-name>
+        <servlet-class>ru.pravvich.servlet.UpdateDoneStatusServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UpdateDoneStatusServlet</servlet-name>
+        <url-pattern>/update_done_status</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -5,23 +5,27 @@
  */
 $(document).ready(function(){
 
-    //"#send_task" == id кнопки-input'а.
-    $("#send_task").click(function(){
+    //'#result_from_server' == id of form
+    $('#result_from_server').submit(function (e) {
 
-        // '#data' == input для данных.
-        var data = $('#data').val();
+        //отказались отстандарнтого поведения формы к ajax
+        e.preventDefault();
 
-        // 'add_task' == url сервлета.
-        $.post('add_task', {
+        // собрали данные из формы
+        var data = $(this).serialize();
 
-            //первое значение==ключ для HttpServletRequest.getParameter("data").
-            //второе переменная полученная из var data = $('#data').val();
-            data : data
-
-        }, function(result){
-
-            // #answer_from_server == id области в которую будет помещен ответ.
-            $("#result_from_server").html(result);
+        $.ajax({
+            url: "add_task",
+            data : data,
+            //method
+            type : "post",
+            //ответ
+            success : function (data) {
+                //'#resp' == id of <div>
+                $('#resp').text(data);
+            }
         });
-    })
+
+        // console.log(data);
+    });
 });

@@ -11,7 +11,7 @@
 
     <title>home</title>
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 
     <%--JavaScript refer --%>
     <script><%@include file="/WEB-INF/js/add_task.js" %></script>
@@ -19,15 +19,18 @@
 
 </head>
 <body>
-    <div>
-        <label for="data">Enter the task</label><input id="data" type="text">
-        <input id="send_task" type="button" value="Ok" />
-        <p id="result_from_server"></p>
-    </div>
+    <form id="result_from_server">
+        <input name="data" type="text">
+        <input type="submit" value="send">
+    </form>
+
+    <div id="resp"></div>
 
     <div>
         <input id="get_all_task_but" type="button" value="Get all task" />
-        <p id="all_task_view"></p>
+        <ul id="all_tasks">
+
+        </ul>
     </div>
 </body>
 </html>

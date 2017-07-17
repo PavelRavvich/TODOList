@@ -16,6 +16,8 @@ public class AdderTaskServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+
+
         System.out.println(req.getParameter("data"));
         resp.getWriter().write("server messege");
 
