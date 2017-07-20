@@ -23,11 +23,17 @@ public class TaskGetterServlet extends HttpServlet {
         final Task task = new Task(1, "todo",
                 new Timestamp(System.currentTimeMillis()), false);
 
+        final Task task1 = new Task(2, "todo2",
+                new Timestamp(System.currentTimeMillis()), true);
+
+        final Task task2 = new Task(3, "todo3",
+                new Timestamp(System.currentTimeMillis()), false);
+
         List<Task> tasks = new ArrayList<>();
         tasks.add(task);
-        tasks.add(task);
-        tasks.add(task);
-        tasks.add(task);
+        tasks.add(task1);
+        tasks.add(task2);
+
 
 
         resp.getWriter().write(new Gson().toJson(tasks));
