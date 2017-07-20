@@ -1,7 +1,5 @@
 CREATE DATABASE todo_list ENCODING 'UTF8';
 
-\c todo_list
-
 CREATE TABLE IF NOT EXISTS tasks (
     id SERIAL NOT NULL,
     description TEXT NOT NULL,
