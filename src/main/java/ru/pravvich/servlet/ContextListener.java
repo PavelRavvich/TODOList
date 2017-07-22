@@ -2,10 +2,14 @@ package ru.pravvich.servlet;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import ru.pravvich.dao.DAO;
+import ru.pravvich.dao.TaskDAO;
+import ru.pravvich.model.Task;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -14,6 +18,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * <p>
  * ContextListener inject database connection pool to servlet context.
  */
+@WebListener
 public class ContextListener implements ServletContextListener {
     /**
      * Database connection pool.
@@ -28,10 +33,11 @@ public class ContextListener implements ServletContextListener {
 
         final ServletContext servletContext = sce.getServletContext();
 
-        //Inject connection pool to servlet context.
-        servletContext.setAttribute(
-                "factory", new AtomicReference<>(factory));
+        final DAO<Integer, Task> taskDAO =
+                new TaskDAO(new AtomicReference<>(factory));
 
+        //Inject connection pool to servlet context.
+        servletContext.setAttribute("daoTask", taskDAO);
     }
 
     @Override

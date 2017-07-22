@@ -15,16 +15,15 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 public class CheckHibernate {
 
-    public static void main(String[] args) {
-        final SessionFactory factory =
-                new Configuration().configure().buildSessionFactory();
-
-
-        final List<Task> all = new TaskDAO(new AtomicReference<>(factory)).getAll();
-
-        factory.close();
-
-        all.forEach(System.out::println);
-    }
-
+//    public static void main(String[] args) {
+//        final SessionFactory factory =
+//                new Configuration().configure().buildSessionFactory();
+//
+//
+//        final List<Task> all = new TaskDAO(new AtomicReference<>(factory)).getAll();
+//
+//        factory.close();
+//
+//        all.forEach(System.out::println);
+//    }
 }

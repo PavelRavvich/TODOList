@@ -52,7 +52,7 @@ public class TaskDAOTest {
     @Test
     public void saveTest() {
 
-        final DAO<Task, Integer> dao = new TaskDAO(factory);
+        final DAO<Integer, Task> dao = new TaskDAO(factory);
         dao.save(task);
 
         verify(session).beginTransaction();
@@ -64,7 +64,7 @@ public class TaskDAOTest {
     @Test
     public void updateTest() {
 
-        final DAO<Task, Integer> dao = new TaskDAO(factory);
+        final DAO<Integer, Task> dao = new TaskDAO(factory);
         dao.update(task);
 
         verify(session).beginTransaction();
@@ -76,7 +76,7 @@ public class TaskDAOTest {
     @Test
     public void deleteTest() {
 
-        final DAO<Task, Integer> dao = new TaskDAO(factory);
+        final DAO<Integer, Task> dao = new TaskDAO(factory);
         dao.delete(task);
 
         verify(session).beginTransaction();

@@ -64,36 +64,32 @@ function printTask(key, value) {
     // checkboxHtml это объект страницы инкапсулированный html тегом.
     //Создание  объекта чекбокса и формирование его состояния.
     var checkboxHtml = $(
-
         // 1-ый параметр это тэг или тип объекта который создаем.
         "<input>",
 
         //Для установки состояния объекта делаем инъекцию состояний (потдерживаемые тегом-объектом)
         {
             class: 'check-box',
-            type : 'checkbox',
+            type: 'checkbox',
 
             //Помимо стандартных полей тегу-объекту можно присваивать дополнительные,
             //с помощью префикса data-.
-            'data-id' : value['id'],
+            'data-id': value['id'],
+            value: value['done']
 
-            value : value['done']
-
-    });
+        });
 
     //Проверка атрибута boolean done который был записан сервером в объект.
-    if(value['done']) {
-        checkboxHtml.attr( 'checked', 'checked' );
+    if (value['done']) {
+        checkboxHtml.attr('checked', 'checked');
     }
 
     //привязавшись к id-шнику части html страницы #all_tasks пишем в него данные
     $('#all_tasks').append(
-        checkboxHtml).append(
-        "</ br>").append(
-        value['id']).append(
-        value['']).append(
-        'desc').append(
-        value['create']);
+        'Done : ').append(checkboxHtml).append(
+        '<br>').append('id : ').append(value['id']).append(
+            '<br>').append('Description : ').append(value['desc']).append(
+                '<br>').append('Create : ').append(value['create']).append(
+                    '<hr width="220px" align="left">');
 }
-
 
