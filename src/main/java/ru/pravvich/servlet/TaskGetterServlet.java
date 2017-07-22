@@ -15,27 +15,27 @@ import java.util.List;
  * Getter for task.
  */
 public class TaskGetterServlet extends HttpServlet {
+    /**
+     * DAO layer for tasks.
+     */
+    private DAO<Integer, Task> taskDAO;
+
+    @Override
+    public void init() throws ServletException {
+        this.taskDAO = (DAO<Integer, Task>) getServletContext()
+                .getAttribute("daoTask");
+
+        super.init();
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
 
-        final DAO<Integer, Task> taskDAO = getDAOTask(req);
-
         final List<Task> allTask = taskDAO.getAll();
 
-        allTask.forEach(System.out::println);
-
+        resp.setContentType("text/json; charset=UTF-8");
         resp.getWriter().write(new Gson().toJson(allTask));
-    }
-
-    /**
-     * Get DAOTask instance.
-     */
-    private DAO<Integer, Task> getDAOTask(final HttpServletRequest req) {
-
-        return (DAO<Integer, Task>) req.getServletContext()
-                .getAttribute("daoTask");
     }
 }

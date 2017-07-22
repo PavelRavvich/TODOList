@@ -11,7 +11,6 @@ import java.io.IOException;
  */
 public class EncodingFilter implements Filter {
 
-
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
     }
@@ -22,7 +21,8 @@ public class EncodingFilter implements Filter {
                          FilterChain chain)
             throws IOException, ServletException {
 
-        request.setCharacterEncoding("UTF8");
+        response.setContentType("text/html; charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
         chain.doFilter(request, response);
     }
 
