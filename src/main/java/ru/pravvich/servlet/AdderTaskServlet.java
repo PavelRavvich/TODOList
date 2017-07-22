@@ -1,5 +1,8 @@
 package ru.pravvich.servlet;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +15,8 @@ import java.io.IOException;
  * Addition task to server.
  */
 public class AdderTaskServlet extends HttpServlet {
+
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)

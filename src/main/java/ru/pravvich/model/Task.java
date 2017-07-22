@@ -1,11 +1,14 @@
 package ru.pravvich.model;
 
+import javax.persistence.Entity;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * Task model.
  */
-public class Task {
+@Entity
+public class Task implements Serializable {
     /**
      * Id of task.
      */
@@ -22,6 +25,9 @@ public class Task {
      * Task status. true - done, false processing.
      */
     private boolean done;
+
+    public Task() {
+    }
 
     /**
      * Default constructor.
@@ -66,5 +72,15 @@ public class Task {
 
     public void setDone(boolean done) {
         this.done = done;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", desc='" + desc + '\'' +
+                ", create=" + create +
+                ", done=" + done +
+                '}';
     }
 }

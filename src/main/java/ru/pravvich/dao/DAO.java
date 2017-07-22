@@ -1,7 +1,5 @@
 package ru.pravvich.dao;
 
-import ru.pravvich.model.Task;
-
 import java.util.List;
 
 /**
@@ -9,49 +7,41 @@ import java.util.List;
  *
  * CRUD DAO.
  */
-public interface DAO {
+public interface DAO<Entity, Id extends Number> {
+
     /**
      * Addition task.
      *
-     * @param task for add.
+     * @param task for save.
      */
-    void addTask(final Task task);
+    void save(final Entity task);
 
     /**
-     * Get task by Id.
+     * Get entity by Id.
      *
      * @param id for select.
-     * @return Task with same id.
+     * @return entity with same id.
      */
-    Task getTaskById(final int id);
+    Entity getById(final Id id);
 
     /**
-     * Check exist task.
+     * Update entity without exist check.
      *
-     * @param task fo check.
-     * @return true if exist, else false.
+     * @param entity new state.
      */
-    boolean isExist(final Task task);
+    void update(final Entity entity);
 
     /**
-     * Update task without exist check.
-     *
-     * @param task new state.
-     */
-
-    void updateTask(final Task task);
-    /**
-     * Delete task.
+     * Delete entity.
      *
      * @param id of task for delete.
      */
-
-    void deleteTask(final int id);
+    void delete(final Entity id);
 
     /**
      * Get all task which contains in task table.
      *
      * @return all exist tasks.
      */
-    List<Task> getAllTasks();
+    List<Entity> getAll();
 }

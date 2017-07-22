@@ -1,13 +1,11 @@
 package ru.pravvich.dao;
 
-
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import ru.pravvich.model.Task;
 
-import java.sql.Timestamp;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Author : Pavel Ravvich.
@@ -21,17 +19,12 @@ public class CheckHibernate {
         final SessionFactory factory =
                 new Configuration().configure().buildSessionFactory();
 
-        final Session session = factory.openSession();
 
-        final Transaction transaction = session.beginTransaction();
-        final Task task2 = new Task(3, "todo3",
-                new Timestamp(System.currentTimeMillis()), false);
+        final List<Task> all = new TaskDAO(new AtomicReference<>(factory)).getAll();
 
-        session.save(task2);
-//        session.createQuery("from Task").list();
-        session.getTransaction().commit();
-        session.close();
         factory.close();
+
+        all.forEach(System.out::println);
     }
 
 }

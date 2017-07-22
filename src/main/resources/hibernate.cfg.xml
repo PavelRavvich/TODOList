@@ -7,6 +7,6 @@
         <property name="connection.password">1</property>
         <property name="dialect">org.hibernate.dialect.PostgreSQL95Dialect</property>
 
-        <mapping resource="ru.pravvich.model.Task.hbm.xml" />
+        <mapping resource="ru/pravvich/model/Task.hbm.xml" />
     </session-factory>
 </hibernate-configuration>
