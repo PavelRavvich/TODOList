@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * <p>
  * TaskDAO database layer for Task entity.
  */
-public class TaskDAO implements DAO<Task, Integer> {
+public class TaskDAO implements DAO<Integer, Task> {
     /**
      * Factory connections to database.
      */

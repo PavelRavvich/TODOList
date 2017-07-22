@@ -1,5 +1,6 @@
 package ru.pravvich.dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  *
  * CRUD DAO.
  */
-public interface DAO<Entity, Id extends Number> {
+public interface DAO<Id extends Number, Entity extends Serializable> {
 
     /**
      * Addition task.
