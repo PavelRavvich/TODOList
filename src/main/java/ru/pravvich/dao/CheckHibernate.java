@@ -20,10 +20,13 @@ public class CheckHibernate {
 //                new Configuration().configure().buildSessionFactory();
 //
 //
-//        final List<Task> all = new TaskDAO(new AtomicReference<>(factory)).getAll();
+//        new TaskDAO(new AtomicReference<>(factory)).updateDone(1, true);
+//        try {
 //
 //        factory.close();
+//        } finally {
+//            factory.close();
+//        }
 //
-//        all.forEach(System.out::println);
 //    }
 }

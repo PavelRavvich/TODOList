@@ -2,6 +2,8 @@ package ru.pravvich.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import ru.pravvich.model.Task;
 
 import java.util.List;
@@ -43,6 +45,31 @@ public class TaskDAO implements DAO<Integer, Task> {
             session.save(task);
 
             session.getTransaction().commit();
+        }
+    }
+
+    /**
+     * Update done status.
+     *
+     * @param id of task.
+     * @param done new status.
+     */
+    @Override
+    public void updateDone(int id, boolean done) {
+
+        try (final Session session = factory.get().openSession()) {
+
+            String hql = "update Task set done = :newDone where id = :oldId";
+
+            final Query query = session.createQuery(hql)
+                    .setParameter("oldId", id)
+                    .setParameter("newDone", done);
+
+            final Transaction transaction = session.beginTransaction();
+
+            query.executeUpdate();
+
+            transaction.commit();
         }
     }
 

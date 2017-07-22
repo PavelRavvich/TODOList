@@ -18,6 +18,14 @@ public interface DAO<Id extends Number, Entity extends Serializable> {
     void save(final Entity task);
 
     /**
+     * Update done status.
+     *
+     * @param id of task.
+     * @param done new status.
+     */
+    void updateDone(final int id, final boolean done);
+
+    /**
      * Get entity by Id.
      *
      * @param id for select.
