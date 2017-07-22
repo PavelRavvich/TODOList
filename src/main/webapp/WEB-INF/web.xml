@@ -4,6 +4,16 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+    <!--Set UTF8 Encoding for all servlets-->
+    <filter>
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>ru.pravvich.servlet.EncodingFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>*</url-pattern>
+    </filter-mapping>
 
     <!--Home page-->
     <servlet>
@@ -37,7 +47,6 @@
         <servlet-name>GetterTaskServlet</servlet-name>
         <url-pattern>/get_all_tasks</url-pattern>
     </servlet-mapping>
-
 
     <!--Update done status.-->
     <servlet>
